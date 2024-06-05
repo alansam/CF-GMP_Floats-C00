@@ -1,7 +1,10 @@
 all: main
 
 CC = clang
-override CFLAGS += -g -Wno-everything -pthread -lm
+#CC = gcc
+#override CFLAGS += -g -Wno-everything -pthread -lm -lgmp
+override CFLAGS += -g -Wall -Wpedantic -Werror=vla -fsanitize=address -std=gnu2x -lgmp -pthread -lm -lmpfr -lgmp
+#-Wl,--print-memory-usage
 
 SRCS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.c' -print)
 HEADERS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.h' -print)
