@@ -111,6 +111,8 @@ void mpfr_fp(void) {
   int cmp = mpfr_cmp(r0, r1);
   mpfr_printf("r0 %s r1\n", (cmp == 0 ? ".EQ." : cmp > 0 ? ".GT." : ".LT."));
 
+  mpfr_clears(x0, x1, y0, y1, r0, r1, NULL);
+
   putchar('\n');
 
   return;
@@ -133,6 +135,9 @@ void point1(void) {
   mpfr_set_d(mpfr1, 1.0 / 10.0, MPFR_RNDD);
 
   mpfr_printf("gmp1: %18.15Ff, mpfr1: %18.15RNf\n", gmp1, mpfr1);
+
+  mpf_clear(gmp1);
+  mpfr_clear(mpfr1);
 
   return;
 }
